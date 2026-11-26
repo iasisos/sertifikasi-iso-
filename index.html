@@ -1,0 +1,30 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { SertifikasiIsoPage } from "@/components/SertifikasiIsoPage";
+import { CANONICAL_URL } from "@/data/iso-content";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Sertifikasi ISO di Indonesia — Lembaga Sertifikasi Resmi | IAS Indonesia" },
+      {
+        name: "description",
+        content:
+          "Layanan sertifikasi ISO di Indonesia oleh IAS Indonesia untuk ISO 9001, ISO 14001, ISO 45001, ISO 27001, ISO 22000, dan standar internasional lainnya. Konsultasi & audit resmi.",
+      },
+      {
+        property: "og:title",
+        content: "Sertifikasi ISO di Indonesia — Lembaga Sertifikasi Resmi | IAS Indonesia",
+      },
+      {
+        property: "og:description",
+        content:
+          "Audit dan penerbitan sertifikasi ISO di Indonesia bersama IAS Indonesia (20+ tahun pengalaman, 300+ auditor empanel, grup EAS).",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: CANONICAL_URL },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: CANONICAL_URL }],
+  }),
+  component: SertifikasiIsoPage,
+});
