@@ -1,30 +1,207 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { SertifikasiIsoPage } from "@/components/SertifikasiIsoPage";
-import { CANONICAL_URL } from "@/data/iso-content";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sertifikasi ISO di Indonesia | Panduan Jenis, Manfaat, dan Tahapan</title>
+<meta name="description" content="Pelajari sertifikasi ISO di Indonesia: jenis standar ISO 9001, 14001, 45001, 27001 dan 22000, manfaat, serta tahapan menuju sertifikat sistem manajemen.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yourdomain.com/sertifikasi-iso/"><!-- ganti dengan URL halaman ini -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sertifikasi ISO di Indonesia">
+<meta property="og:description" content="Panduan singkat jenis, manfaat, dan tahapan sertifikasi ISO untuk organisasi di Indonesia.">
+<style>
+:root{--ink:#2a1f33;--paper:#f9f7fa;--card:#ffffff;--line:#e2dce6;--accent:#7b3f7a;--accent-dark:#5f2e5e;--mark:#f2c14e;--muted:#62566b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;font-weight:700}
+a{color:var(--accent-dark)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--accent-dark)}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:600}
+.btn:hover{background:var(--accent-dark)}
+.hero{background:var(--ink);color:#fff;padding:84px 0 72px}
+.hero p.lead{max-width:640px;margin:20px 0 30px;color:#ddd3e3;font-size:1.1rem}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);max-width:780px}
+.hero h1 span{box-shadow:inset 0 -.32em 0 rgba(242,193,78,.45)}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.tags span{border:1px solid #5d4a6b;padding:5px 14px;border-radius:99px;font-size:.9rem;color:#ddd3e3}
+section{padding:64px 0}
+section.alt{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:14px}
+h3{font-size:1.2rem;margin-bottom:6px}
+.intro{max-width:680px;color:var(--muted);margin-bottom:30px}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:44px}
+.two p+p{margin-top:14px}
+ul.check{list-style:none}
+ul.check li{padding:8px 0 8px 28px;border-bottom:1px solid var(--line);position:relative}
+ul.check li::before{content:"";position:absolute;left:4px;top:17px;width:10px;height:10px;background:var(--accent);border-radius:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.item{border-left:4px solid var(--accent);padding:4px 0 4px 18px}
+.item p{color:var(--muted);font-size:.98rem}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.step{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px}
+.step::before{content:counter(s);display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;background:var(--ink);color:#fff;border-radius:50%;font-weight:700;margin-bottom:10px}
+.step p{color:var(--muted);font-size:.96rem}
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 30px;list-style:none}
+.who li{padding:10px 0;border-bottom:1px solid var(--line)}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;padding-right:24px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:0;color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin-top:10px;color:var(--muted);max-width:720px}
+.cta{background:var(--ink);color:#fff;text-align:center}
+.cta p{max-width:600px;margin:0 auto 26px;color:#ddd3e3}
+.cta .btn{background:var(--mark);color:var(--ink)}
+.cta .btn:hover{background:#e6b23a}
+footer{padding:28px 0;font-size:.88rem;color:var(--muted)}
+footer p+p{margin-top:6px}
+@media(max-width:760px){.two{grid-template-columns:1fr;gap:26px}section{padding:46px 0}.hero{padding:56px 0 48px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body id="top">
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Sertifikasi ISO di Indonesia — Lembaga Sertifikasi Resmi | IAS Indonesia" },
-      {
-        name: "description",
-        content:
-          "Layanan sertifikasi ISO di Indonesia oleh IAS Indonesia untuk ISO 9001, ISO 14001, ISO 45001, ISO 27001, ISO 22000, dan standar internasional lainnya. Konsultasi & audit resmi.",
-      },
-      {
-        property: "og:title",
-        content: "Sertifikasi ISO di Indonesia — Lembaga Sertifikasi Resmi | IAS Indonesia",
-      },
-      {
-        property: "og:description",
-        content:
-          "Audit dan penerbitan sertifikasi ISO di Indonesia bersama IAS Indonesia (20+ tahun pengalaman, 300+ auditor empanel, grup EAS).",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: CANONICAL_URL },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: CANONICAL_URL }],
-  }),
-  component: SertifikasiIsoPage,
-});
+<header>
+<div class="wrap">
+<a class="brand" href="#top">Panduan ISO</a>
+<nav aria-label="Navigasi utama">
+<a href="#ikhtisar">Ikhtisar</a><a href="#jenis">Jenis ISO</a><a href="#manfaat">Manfaat</a><a href="#tahapan">Tahapan</a><a href="#faq">FAQ</a>
+</nav>
+<a class="btn" href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">Info Sertifikasi</a>
+</div>
+</header>
+
+<main>
+<div class="hero">
+<div class="wrap">
+<h1>Sertifikasi ISO di Indonesia untuk <span>sistem manajemen</span> yang diakui</h1>
+<p class="lead">Kenali jenis standar ISO, manfaat sertifikasi bagi organisasi, dan tahapan yang umumnya ditempuh hingga memperoleh sertifikat.</p>
+<a class="btn" href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">Lihat Detail Sertifikasi ISO</a>
+<div class="tags"><span>Mutu</span><span>Lingkungan</span><span>K3</span><span>Keamanan informasi</span><span>Keamanan pangan</span></div>
+</div>
+</div>
+
+<section id="ikhtisar">
+<div class="wrap two">
+<div>
+<h2>Apa itu sertifikasi ISO?</h2>
+<p>Sertifikasi ISO adalah penilaian independen oleh lembaga sertifikasi untuk memastikan sistem manajemen suatu organisasi memenuhi persyaratan standar ISO tertentu. Yang disertifikasi adalah sistem manajemen organisasi, bukan produk.</p>
+<p>Sertifikasi bersifat sukarela, tetapi banyak pelanggan, tender, dan mitra bisnis mensyaratkannya. Di Indonesia, kredibilitas sertifikat bergantung pada lembaga sertifikasi yang menerbitkannya, termasuk status akreditasinya.</p>
+<p>Informasi lengkap tentang prosesnya tersedia di halaman <a href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">sertifikasi ISO di Indonesia</a> milik IAS Indonesia.</p>
+</div>
+<div>
+<h3>Poin penting</h3>
+<ul class="check">
+<li>Yang dinilai adalah sistem manajemen organisasi</li>
+<li>Penilaian dilakukan oleh pihak ketiga yang independen</li>
+<li>Sertifikat umumnya berlaku tiga tahun</li>
+<li>Audit pengawasan dilakukan secara berkala</li>
+<li>Penerapan harus dibuktikan dengan rekaman</li>
+<li>Perbaikan berkelanjutan menjadi inti sistem</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="jenis" class="alt">
+<div class="wrap">
+<h2>Jenis sertifikasi ISO yang umum</h2>
+<p class="intro">Pilih standar yang sesuai dengan risiko dan kebutuhan bisnis Anda.</p>
+<div class="grid">
+<div class="item"><h3>ISO 9001</h3><p>Sistem manajemen mutu: konsistensi layanan dan kepuasan pelanggan.</p></div>
+<div class="item"><h3>ISO 14001</h3><p>Sistem manajemen lingkungan: pengelolaan dampak lingkungan dan kepatuhan.</p></div>
+<div class="item"><h3>ISO 45001</h3><p>Sistem manajemen keselamatan dan kesehatan kerja (K3).</p></div>
+<div class="item"><h3>ISO 27001</h3><p>Sistem manajemen keamanan informasi dan perlindungan data.</p></div>
+<div class="item"><h3>ISO 22000</h3><p>Sistem manajemen keamanan pangan di rantai pasok makanan.</p></div>
+<div class="item"><h3>ISO 37001</h3><p>Sistem manajemen anti penyuapan untuk mencegah dan mendeteksi penyuapan.</p></div>
+</div>
+</div>
+</section>
+
+<section id="manfaat">
+<div class="wrap">
+<h2>Manfaat sertifikasi ISO</h2>
+<p class="intro">Sistem yang terstruktur membantu organisasi bekerja lebih konsisten dan terkelola.</p>
+<div class="grid">
+<div class="item"><h3>Kepercayaan pelanggan</h3><p>Sertifikat dari pihak ketiga menunjukkan komitmen terhadap praktik terstandar.</p></div>
+<div class="item"><h3>Syarat tender dan kontrak</h3><p>Banyak proyek dan pelanggan korporat mensyaratkan sertifikasi tertentu.</p></div>
+<div class="item"><h3>Proses lebih tertata</h3><p>Tanggung jawab, prosedur, dan rekaman menjadi jelas.</p></div>
+<div class="item"><h3>Pengelolaan risiko</h3><p>Risiko dan peluang diidentifikasi dan dikendalikan secara sistematis.</p></div>
+<div class="item"><h3>Dukungan kepatuhan</h3><p>Membantu memantau persyaratan peraturan yang relevan.</p></div>
+<div class="item"><h3>Perbaikan berkelanjutan</h3><p>Audit internal dan tinjauan manajemen mendorong peningkatan kinerja.</p></div>
+</div>
+</div>
+</section>
+
+<section id="tahapan" class="alt">
+<div class="wrap">
+<h2>Tahapan sertifikasi ISO</h2>
+<p class="intro">Alur umum. Detail dapat berbeda antar lembaga sertifikasi.</p>
+<div class="steps">
+<div class="step"><h3>Pilih standar</h3><p>Tentukan standar dan ruang lingkup sertifikasi.</p></div>
+<div class="step"><h3>Kaji kesenjangan</h3><p>Bandingkan praktik saat ini dengan persyaratan standar.</p></div>
+<div class="step"><h3>Terapkan sistem</h3><p>Susun dokumen, jalankan proses, dan latih personel.</p></div>
+<div class="step"><h3>Audit internal</h3><p>Evaluasi kesiapan dan perbaiki ketidaksesuaian.</p></div>
+<div class="step"><h3>Audit sertifikasi</h3><p>Lembaga sertifikasi menilai sistem, biasanya dalam dua tahap.</p></div>
+</div>
+<p style="margin-top:28px">Setelah sertifikat terbit, audit pengawasan dilakukan berkala dan sertifikasi ulang pada akhir siklus. Persyaratan terbaru dapat dilihat di <a href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">halaman sertifikasi ISO IAS Indonesia</a>.</p>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<h2>Organisasi yang dapat memperoleh sertifikasi ISO</h2>
+<p class="intro">Sertifikasi dapat diterapkan di berbagai ukuran dan sektor.</p>
+<ul class="who">
+<li>Manufaktur dan industri</li>
+<li>Konstruksi dan kontraktor</li>
+<li>Jasa dan konsultansi</li>
+<li>Teknologi informasi</li>
+<li>Makanan dan minuman</li>
+<li>Kesehatan dan pendidikan</li>
+<li>Logistik dan transportasi</li>
+<li>Instansi dan organisasi nirlaba</li>
+</ul>
+</div>
+</section>
+
+<section id="faq" class="alt">
+<div class="wrap">
+<h2>Pertanyaan yang sering diajukan</h2>
+<p class="intro">Jawaban singkat seputar sertifikasi ISO.</p>
+<details><summary>Apakah sertifikasi ISO wajib?</summary><p>Pada umumnya bersifat sukarela, tetapi pelanggan, tender, atau regulasi tertentu dapat mensyaratkannya.</p></details>
+<details><summary>Apa yang disertifikasi, produk atau perusahaan?</summary><p>Yang disertifikasi adalah sistem manajemen organisasi, bukan produk atau layanan secara langsung.</p></details>
+<details><summary>Berapa lama sertifikat ISO berlaku?</summary><p>Umumnya tiga tahun, dengan audit pengawasan berkala. Ketentuan pastinya mengikuti lembaga sertifikasi.</p></details>
+<details><summary>Mengapa akreditasi lembaga sertifikasi penting?</summary><p>Akreditasi menunjukkan bahwa lembaga sertifikasi dinilai kompeten oleh badan akreditasi. Di Indonesia, badan akreditasi nasional adalah KAN. Periksa status akreditasi lembaga sebelum memilih.</p></details>
+<details><summary>Apakah pelatihan ISO sama dengan sertifikasi?</summary><p>Tidak. Pelatihan mengembangkan kompetensi individu, sedangkan sertifikasi menilai sistem manajemen organisasi.</p></details>
+<details><summary>Di mana saya bisa mendapat informasi sertifikasi?</summary><p>Lihat halaman <a href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">sertifikasi ISO di Indonesia</a> untuk persyaratan dan cara mengajukan.</p></details>
+</div>
+</section>
+
+<section class="cta">
+<div class="wrap">
+<h2>Siap memulai sertifikasi ISO?</h2>
+<p>Dapatkan informasi persyaratan, proses, dan cara mengajukan sertifikasi.</p>
+<a class="btn" href="https://ias-indonesia.org/sertifikasi-iso-di-indonesia/">Kunjungi Halaman Sertifikasi ISO</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<p>&copy; 2026 Panduan ISO. Semua hak dilindungi.</p>
+<p>Halaman ini berisi informasi independen dan bukan publikasi resmi ISO.</p>
+</div>
+</footer>
+
+</body>
+</html>
